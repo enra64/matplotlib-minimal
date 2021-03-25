@@ -9,7 +9,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Berlin
 RUN apt-get update && apt-get install -y \
     python3-tk \
+    gcc \
  && rm -rf /var/lib/apt/lists/*
 
 # Add python scientific computing basics
-RUN pip install --no-cache-dir numpy pandas matplotlib scipy
+RUN pip install --no-cache-dir numpy pandas matplotlib scipy fastparquet pyedflib
