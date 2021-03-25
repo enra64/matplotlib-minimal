@@ -5,7 +5,7 @@ FROM alpine:latest
 
 LABEL MAINTAINER="Janos Czentye <czentye@tmit.bme.hu>"
 ENV LANG=C.UTF-8
-ARG MATPLOTLIB_VERSION=3.1.2
+ARG MATPLOTLIB_VERSION=3.3.4
 
 # Build dependencies
 RUN apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
@@ -24,6 +24,7 @@ RUN apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
     # Install Python dependencies
     pip3 install -v --no-cache-dir --upgrade pip && \
     pip3 install -v --no-cache-dir numpy && \
+    pip3 install -v --no-cache-dir pandas && \
     pip3 install -v --no-cache-dir matplotlib==$MATPLOTLIB_VERSION && \
     # Cleanup
     apk del --purge build-base libgfortran libpng-dev freetype-dev \
